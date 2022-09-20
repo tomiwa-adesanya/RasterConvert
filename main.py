@@ -2,7 +2,7 @@ from PIL import Image
 from tkinter import ttk
 from tkinter import filedialog
 from os import getlogin, path, startfile
-from tkinter.messagebox import showerror
+from tkinter.messagebox import showerror, showinfo
 import tkinter as tk
 
 icon_path = "data\\img\\icon.ico"
@@ -187,11 +187,12 @@ class RasterConvert(tk.Tk):
             destination = self.savepath + "\\" + file_name
 
             img = Image.open(self.img_path)
+            img_format = img.format
 
             if (_format == "jpeg"):
                 img = img.convert("RGB")
             elif (_format == "ico"):
-                return self.convert_ico(img, destination)
+                return self.convert_ico(img, img_format, destination)
             elif (not _format):
                 _format = "png"
 
@@ -201,18 +202,21 @@ class RasterConvert(tk.Tk):
             except:
                 destination = self.get_destination() + f".{_format}"
                 img.save(destination, format=_format)
-
+            finally:
+                showinfo(
+                    title="Image conversion",
+                    message=f"{img_format} to {_format} conversion completed"
+                )
                 dir = path.dirname(destination)
                 startfile(dir)
 
         else:
             showerror(
                 title="RascalConvert error",
-                message="Please select both image and image format to convert image to"
+                message="Please select both the image and the file format to convert the image to"
             )
 
-
-    def convert_ico(self, img: Image.Image, destination: str) -> None:
+    def convert_ico(self, img: Image.Image, img_format:str,  destination: str) -> None:
         """
         Converts other image types to an ico
         """
@@ -224,11 +228,14 @@ class RasterConvert(tk.Tk):
         except:
             destination = self.get_destination() + f".ico"
             img.save(destination, format="ico", sizes=_sizes)
-
+        finally:
+            showinfo(
+                title="Image conversion",
+                message=f"{img_format} to ICO conversion completed"
+            )
             dir = path.dirname(destination)
             startfile(dir)
-
-
+        
     def __bind_events(self) -> None:
         self.bind(
             "<Control-w>", lambda event=None: self.destroy()
