@@ -18,7 +18,7 @@ Raster images file format formats supported by RasterConvert are:
   * DIB (Device Independent Bitmap)
   * GIF (Graphics Interchange Format)
 
-RasterConvert also maintains image transparency in file formats that support transparent background like PNG, TIFF, GIF, ICO.
+RasterConvert also maintains image transparency in file formats that support transparent background such as PNG, TIFF, GIF, ICO.
 
 ## Working with the source code(Python programmers)
 
@@ -36,5 +36,8 @@ Source code requirments:
  
  ## Installing and running RasterConvert(Non Python Programmers)
  
- For non-programmers, I have compiled a setup that may be used to install this application in your computer, and I have also compiled a standalone executable that
- doesn't require installation to use software.
+ For non-programmers, I have compiled and included(in this repository) a setup that may be installed unto your computer before running application.
+ Upon installation of setup, shortcuts will be added to your start menu and desktop. I have also included(in this repository) a  standalone executable that
+ doesn't require installation before running application.
+ 
+ 
