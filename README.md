@@ -65,3 +65,5 @@ STEP 2:
 
   ![step-2](/data/img/preview/step-2.png)
   ![response](/data/img/preview/response.png)
+
+The original image isn't modified after converting it to a different file format, a new image in the specified file format is created from the original image instead.
